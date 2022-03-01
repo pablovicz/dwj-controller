@@ -61,6 +61,7 @@ export function Home() {
                         onClick={handleReset}
                         icon={<Icon as={FiRepeat} />}
                         colorScheme="whiteAlpha"
+                        hidden={!isWorkStarted}
                     />
                     <VStack spacing="2">
                         <Text fontSize="24" fontWeight="extrabold" >Work Journey </Text>

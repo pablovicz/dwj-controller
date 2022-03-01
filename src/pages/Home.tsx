@@ -57,13 +57,12 @@ export function Home() {
             <VStack spacing="20" w="60vw" align="center" maxWidth={800}>
                 <Flex flexDir="row" justify="space-evenly" align="center" w="100%" >
                     <Box>
-                        {!isWorkStarted && (
+                        {isWorkStarted && (
                             <IconButton
                                 aria-label="rerun"
                                 onClick={handleReset}
                                 icon={<Icon as={FiRepeat} />}
                                 colorScheme="whiteAlpha"
-                                disabled={!isWorkStarted}
                             />
                         )}
                     </Box>

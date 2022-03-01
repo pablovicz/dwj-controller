@@ -1,5 +1,5 @@
 import {
-    Flex, Button, VStack, Text, ScaleFade, useDisclosure, Icon, IconButton
+    Flex, Button, VStack, Text, ScaleFade, useDisclosure, Icon, IconButton, Box
 } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { useEffect, useState } from 'react';
@@ -56,15 +56,17 @@ export function Home() {
         <Flex w="100vw" h="100vh" align="center" justify="center" overflowX="hidden" >
             <VStack spacing="20" w="60vw" align="center" maxWidth={800}>
                 <Flex flexDir="row" justify="space-evenly" align="center" w="100%" >
-                    {!isWorkStarted && (
-                        <IconButton
-                            aria-label="rerun"
-                            onClick={handleReset}
-                            icon={<Icon as={FiRepeat} />}
-                            colorScheme="whiteAlpha"
-                            disabled={!isWorkStarted}
-                        />
-                    )}
+                    <Box>
+                        {!isWorkStarted && (
+                            <IconButton
+                                aria-label="rerun"
+                                onClick={handleReset}
+                                icon={<Icon as={FiRepeat} />}
+                                colorScheme="whiteAlpha"
+                                disabled={!isWorkStarted}
+                            />
+                        )}
+                    </Box>
                     <VStack spacing="2">
                         <Text fontSize="24" fontWeight="extrabold" >Work Journey </Text>
                         <Text fontSize="24" fontWeight="extrabold" color="yellow.400">Controller</Text>

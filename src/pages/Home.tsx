@@ -56,13 +56,15 @@ export function Home() {
         <Flex w="100vw" h="100vh" align="center" justify="center" overflowX="hidden" >
             <VStack spacing="20" w="60vw" align="center" maxWidth={800}>
                 <Flex flexDir="row" justify="space-evenly" align="center" w="100%" >
-                    <IconButton
-                        aria-label="rerun"
-                        onClick={handleReset}
-                        icon={<Icon as={FiRepeat} />}
-                        colorScheme="whiteAlpha"
-                        hidden={!isWorkStarted}
-                    />
+                    {!isWorkStarted && (
+                        <IconButton
+                            aria-label="rerun"
+                            onClick={handleReset}
+                            icon={<Icon as={FiRepeat} />}
+                            colorScheme="whiteAlpha"
+                            disabled={!isWorkStarted}
+                        />
+                    )}
                     <VStack spacing="2">
                         <Text fontSize="24" fontWeight="extrabold" >Work Journey </Text>
                         <Text fontSize="24" fontWeight="extrabold" color="yellow.400">Controller</Text>

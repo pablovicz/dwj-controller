@@ -1,11 +1,14 @@
 import {
-    Flex, Button, VStack, Text, ScaleFade, useDisclosure, Icon, IconButton, Box
+    Flex, Button, VStack, Text, ScaleFade, useDisclosure, Icon, IconButton, Box, useBreakpointValue
 } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { FiSliders, FiRepeat } from 'react-icons/fi';
+import { Header } from '../components/Header';
 import { HourMinuteInput } from '../components/HourMinuteInput';
+import { Logo } from '../components/Logo';
 import { ParametersModal } from '../components/Modal/ParametersModal';
+import { TooltipBtnIcon } from '../components/TooltipBtnIcon';
 import { ParametersContext } from '../service/contexts/ParametersContext';
 import { formatEndDate, getEndDate } from '../utils/dateUtils';
 
@@ -52,31 +55,58 @@ export function Home() {
 
     }, [preferencesData, handleEndTimeSuggestion])
 
+    const isWideVersion = useBreakpointValue({
+        base: false,
+        md: true,
+        lg: true
+    })
+
     return (
-        <Flex w="100vw" h="100vh" align="center" justify="center" overflowX="hidden" >
-            <VStack spacing="20" w="60vw" align="center" maxWidth={800}>
-                <Flex flexDir="row" justify="space-evenly" align="center" w="100%" >
-                    <Box>
-                        {isWorkStarted && (
-                            <IconButton
+        <Flex 
+        flexDir="column" 
+        w="100vw" 
+        h="100vh" 
+        align="center" 
+        justify={isWideVersion ? "center" : "space-between"}
+        overflowX="hidden" 
+        >
+            {!isWideVersion && (
+                <Header
+                    isWorkStarted={isWorkStarted}
+                    handleReset={handleReset}
+                    handleParametersOpen={onOpen}
+                />
+            )}
+            <VStack 
+            spacing="20" 
+            w="60vw" 
+            align="center" 
+            maxWidth={800}
+            mb={isWideVersion ? "2" : "20"}
+            >
+                {isWideVersion ? (
+                    <Flex flexDir="row" justify="space-evenly" align="center" w="100%" >
+                        <Box>
+                            <TooltipBtnIcon
+                                label="Run Again"
                                 aria-label="rerun"
                                 onClick={handleReset}
                                 icon={<Icon as={FiRepeat} />}
                                 colorScheme="whiteAlpha"
+                                renderCondition={isWorkStarted}
                             />
-                        )}
-                    </Box>
-                    <VStack spacing="2">
-                        <Text fontSize="24" fontWeight="extrabold" >Work Journey </Text>
-                        <Text fontSize="24" fontWeight="extrabold" color="yellow.400">Controller</Text>
-                    </VStack>
-                    <IconButton
-                        aria-label="parameters"
-                        onClick={onOpen}
-                        icon={<Icon as={FiSliders} />}
-                        colorScheme="yellow"
-                    />
-                </Flex>
+                        </Box>
+                        <Logo />
+                        <TooltipBtnIcon
+                            label="Parameters"
+                            aria-label="parameters"
+                            onClick={onOpen}
+                            icon={<Icon as={FiSliders} />}
+                        />
+                    </Flex>
+                ) : (
+                    <Logo />
+                )}
                 {!isWorkStarted && (
                     <>
                         <HourMinuteInput

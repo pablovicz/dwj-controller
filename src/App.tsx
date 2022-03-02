@@ -1,17 +1,21 @@
-import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
-import { theme } from './styles/theme';
+//import { theme } from './styles/theme';
 import { Home } from './pages/Home';
 import { ParametersProvider } from './service/contexts/ParametersContext';
+import { ThemeProvider } from './service/contexts/ThemeContext';
+import { themeDark } from './styles/theme';
 
 
 function App() {
+
   return (
-    <ChakraProvider resetCSS theme={theme}>
-      <ParametersProvider>
-        <Home />
-      </ParametersProvider>
-    </ChakraProvider >
+    <ThemeProvider>
+      <ChakraProvider resetCSS theme={themeDark}>
+        <ParametersProvider>
+          <Home />
+        </ParametersProvider>
+      </ChakraProvider >
+    </ThemeProvider>
   );
 }
 

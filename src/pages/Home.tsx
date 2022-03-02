@@ -80,7 +80,8 @@ export function Home() {
             )}
             <VStack 
             spacing="20" 
-            w="60vw" 
+            w="60vw"
+            h="calc(100vh - 100px)" 
             align="center" 
             maxWidth={800}
             mb={isWideVersion ? "2" : "10"}

@@ -69,6 +69,7 @@ export function Home() {
         align="center" 
         justify={isWideVersion ? "center" : "space-between"}
         overflowX="hidden" 
+        overflowY="hidden" 
         >
             {!isWideVersion && (
                 <Header
@@ -82,7 +83,7 @@ export function Home() {
             w="60vw" 
             align="center" 
             maxWidth={800}
-            mb={isWideVersion ? "2" : "20"}
+            mb={isWideVersion ? "2" : "10"}
             >
                 {isWideVersion ? (
                     <Flex flexDir="row" justify="space-evenly" align="center" w="100%" >

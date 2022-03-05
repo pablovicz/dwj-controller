@@ -1,7 +1,8 @@
 import { destroyCookie, parseCookies, setCookie } from "nookies";
 import { createContext, ReactNode, useEffect, useState } from "react";
+import { useCookies } from "../hooks/useCookies";
 
-type PreferencesData = { 
+type PreferencesData = {
     workJourney: number;
     breakTime: number;
     extraTime: number;
@@ -23,41 +24,43 @@ type ParametersProviderProps = {
 
 export function ParametersProvider({ children }: ParametersProviderProps) {
 
+    const { getCookieData, updateCookieData } = useCookies();
 
-    const [preferencesData, setPreferencesData] = useState<PreferencesData>({workJourney: 8, breakTime: 90, extraTime: 0} as PreferencesData);
+    const [preferencesData, setPreferencesData] = useState<PreferencesData>({ workJourney: 8, breakTime: 90, extraTime: 0 } as PreferencesData);
 
+    const defaultPreferences = { workJourney: 8, breakTime: 90, extraTime: 0 };
+
+    const cookieIsAllowed = getCookieData('allowcookieuse');
 
     useEffect(() => {
-        const { 'workjourneycontroller.preferences': preferences } = parseCookies();
 
-        if (preferences) {
-            const data = JSON.parse(preferences);
-            setPreferencesData(data);
+        if (cookieIsAllowed) {
+            const preferences = getCookieData('preferences');
+            if (preferences) {
+                setPreferencesData(preferences);
+            }
         }
 
     }, [])
 
 
     async function saveParametersData(workJouney: number, breakTime: number, extraTime: number) {
-        
 
-        const data = { workJourney: workJouney, breakTime: breakTime, extraTime: extraTime }
-        setPreferencesData(data);
-        const { 'workjourneycontroller.preferences': preferences } = parseCookies();
-
-        if (preferences) {
-            destroyCookie(undefined, 'workjourneycontroller.preferences');
+        if (cookieIsAllowed) {
+            const data = { workJourney: workJouney, breakTime: breakTime, extraTime: extraTime }
+            setPreferencesData(data);
+            updateCookieData('preferences', 60 * 60 * 24 * 30, data);
         }
-        setCookie(undefined, 'workjourneycontroller.preferences', JSON.stringify(data), {
-            maxAge: 60 * 60 * 24 * 30, //30 days
-            path: '/'
-        });
     }
 
-    function getSavedPreferences(){
-        const { 'workjourneycontroller.preferences': preferences } = parseCookies();
-        if(preferences) {
-            return JSON.parse(preferences);
+    function getSavedPreferences() {
+        if (cookieIsAllowed) {
+            const preferences = getCookieData('preferences');
+            if (preferences) {
+                return preferences;
+            }
+        } else {
+            return defaultPreferences;
         }
     }
 

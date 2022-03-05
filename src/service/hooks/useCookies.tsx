@@ -4,12 +4,10 @@ import { destroyCookie, parseCookies, setCookie } from "nookies";
 export function useCookies() {
 
     function getTransformedData(data: Object | string) {
-        console.log(data)
-        return typeof data === 'object' ? JSON.stringify(data) : data;
+        return  typeof data === 'object' ? JSON.stringify(data) : data;
     }
 
     function getTransformCookieData(data: string){
-        console.log('entrouu')
         try {
             const dataAsObj = JSON.parse(data)
             return dataAsObj
@@ -31,6 +29,7 @@ export function useCookies() {
 
 
     function updateCookieData(cookieName: string, maxAge: number = 60 * 60 * 24 * 30, data: Object | string) {
+        
         const cookieKey = getKeyName(cookieName);
         const cookieData = getCookieData(cookieName);
         
@@ -67,9 +66,6 @@ export function useCookies() {
             return false
             
         }
-        // if(cookieData){
-        //     return typeof cookieData === 'object' ? JSON.parse(cookieData) : cookieData;
-        // }
     }
 
 

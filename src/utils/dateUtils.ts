@@ -23,6 +23,29 @@ export function getEndDate(startTime: startTimeData, workJourney: number, breakT
     return endTimeDate;
 }
 
-export function formatEndDate(date: Date){
+export function getTimeDiff(startTime: { hour: number, minute: number }, endTime: { hour: number, minute: number }, extraTime: number) {
+    const startTimeMinutes = startTime.hour * 60 + startTime.minute - extraTime;
+    const endTimeMinutes = endTime.hour * 60 + endTime.minute;
+
+    const  periodException = 1000 * 60 * 60 * 21 // 21hrs;
+    const convertToMlSecs = 60 * 1000; 
+    const diff = endTimeMinutes - startTimeMinutes;
+    const diffAbs = (Math.abs(diff)) * convertToMlSecs - periodException;
+    
+    const dateDiff = new Date(diffAbs);
+
+    if (diff < 0) {
+        return `- ${formatEndDate(dateDiff)}`
+    } else {
+        return `+ ${formatEndDate(dateDiff)}`
+    }
+}
+
+
+
+
+export function formatEndDate(date: Date) {
     return date.toLocaleDateString('pt-BR', { hour: '2-digit', minute: '2-digit' }).substring(11, 17);
 }
+
+

@@ -14,7 +14,8 @@ import {
 import { useEffect } from 'react';
 import { useContext, useState } from 'react';
 import { ParametersContext } from '../../service/contexts/ParametersContext';
-import { Slider } from '../Slider';
+import { Slider } from '../Inputs/Slider';
+
 
 interface ParametersModalProps {
     isOpen: boolean;

@@ -4,7 +4,6 @@ interface SwitchInputProps extends SwitchProps {
     name: string;
     label?: string;
     labelPosition?: "left" | "top";
-
 }
 
 

@@ -63,8 +63,10 @@ export function useCookies() {
                 const cookieData = cookies[cookieKey]
                 return getTransformCookieData(cookieData)
             }
-            return false
+            return false;
             
+        } else {
+            return false;
         }
     }
 

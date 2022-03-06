@@ -5,7 +5,8 @@ import {
     Text,
     VStack
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ThemeContext } from '../../service/contexts/ThemeContext';
 import { NumberInput } from './NumberInput';
 
 interface HourMinute {
@@ -28,9 +29,12 @@ interface HourMinuteInputProps {
 
 export function HourMinuteInput({ name, value, parentCallback, label, isDisabled = false }: HourMinuteInputProps) {
 
+    const { isDarkTheme } = useContext(ThemeContext);
+
+
     const [hours, setHours] = useState(value.hour);
     const [minute, setMinute] = useState(value.minute);
-    const [color, setColor] = useState("gray.100");
+    const [color, setColor] = useState(isDarkTheme ? "gray.50" : "gray.900");
 
     useEffect(() => {
         parentCallback({ hour: hours, minute: minute })
@@ -40,7 +44,7 @@ export function HourMinuteInput({ name, value, parentCallback, label, isDisabled
     return (
         <FormControl 
             onMouseEnter={() => setColor("yellow.400")}
-            onMouseLeave={() => setColor("gray.100")}
+            onMouseLeave={() => setColor(isDarkTheme ? "gray.50" : "gray.900")}
         >
             <VStack spacing="2">
                 {

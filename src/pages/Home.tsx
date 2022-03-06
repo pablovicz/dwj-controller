@@ -18,12 +18,7 @@ import { formatEndDate, getEndDate, getTimeDiff } from '../utils/dateUtils';
 
 export function Home() {
 
-    const { updateCookieData, getCookieData, deleteCookie } = useCookies();
-
     const { preferencesData } = useContext(ParametersContext);
-
-
-
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -186,6 +181,7 @@ export function Home() {
                             labelPosition="left"
                             colorScheme="yellow"
                             onChange={handleWorkStartTypeToggle}
+                            isChecked={isWorkTimeInput}
                         />
                     </VStack>
                 )}

@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+<p align="center">
+    <a href="https://workcontroller.netlify.app/" target="_blank" rel="noopener noreferrer">
+        <img src="https://raw.githubusercontent.com/pablovicz/dwj-controller/master/assets/logo.png" alt="workcontroller.com"/> 
+    </a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Projeto
+Controlador de Jornada de Trabalho
 
-In the project directory, you can run:
+## Tecnologias Utilizadas
+<ul>
+    <li>FrontEnd: <a href="https://www.javascript.com/">JavaScript</a>, <a href="https://reactjs.org">React</a>, <a href="https://chakra-ui.com/guides/first-steps">ChakraUI</a></li>
+    
+</ul>
 
-### `npm start`
+## Dependências
+<ul>
+    <li><a href="https://nodejs.org/pt-br/download/">Node.js 14.10+</a></li>
+    <li><a href="https://www.npmjs.com/package/download">Npm 6.14+</a></li>
+</ul>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Layout
+<p align="center"> 
+    <img width"350" height="300" src="https://raw.githubusercontent.com/pablovicz/dwj-controller/master/assets/layout-dark.png" />
+    <img width"350" height="300" src="https://raw.githubusercontent.com/pablovicz/dwj-controller/master/assets/layout-light.png" />
+</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Como utilizar:
 
-### `npm test`
+<p>1 - Produção: 
+  
+<p>1.1 - Acesse o link: </p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<a href="https://workcontroller.netlify.app/" target="_blank" rel="noopener noreferrer">
+Work Controller
+</a>
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p>2 - Em localhost: </p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p>2.1 - Clone o repositório atual</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+$ git clone "https://github.com/pablovicz/dwj-controller.git"
+```
 
-### `npm run eject`
+<p>2.2 - No diretório do clone, execute: </p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+$ npm install 
+$ npm start 
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

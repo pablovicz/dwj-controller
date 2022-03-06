@@ -134,6 +134,7 @@ export function ParametersModal({ isOpen, onClose }: ParametersModalProps) {
                                         labelPosition="left"
                                         onChange={handleThemeToggle}
                                         isChecked={!isDarkTheme}
+                                        colorScheme="yellow"
                                     />
                                 </TabPanel>
                             </TabPanels>

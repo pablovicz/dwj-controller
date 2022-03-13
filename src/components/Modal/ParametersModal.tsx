@@ -111,7 +111,7 @@ export function ParametersModal({ isOpen, onClose }: ParametersModalProps) {
                                             min={30}
                                             max={120}
                                             sliderMarks={[60, 90]}
-                                            valueUnit="hrs"
+                                            valueUnit="min"
                                             step={5}
                                         />
                                         <Slider
